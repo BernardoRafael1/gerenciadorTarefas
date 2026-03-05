@@ -10,10 +10,11 @@ public class gerenciadorTarefas {
         System.out.println("GERENCIADOR DE TAREFAS 2026");
 
         do {
-            System.out.println("\n1. Adicionar Tarefa");
-            System.out.println("2. Listar Tarefas");
-            System.out.println("3. Remover Tarefa");
-            System.out.println("4. Sair");
+            System.out.println("\n1. Adicionar Tarefa"); // create
+            System.out.println("2. Listar Tarefas"); // read
+            System.out.println("3. Remover Tarefa"); // delete
+            System.out.println("4. Editar"); // update
+            System.out.println("5. Sair");
             System.out.print("Escolha: "); // menu
 
             opcao = leitor.nextInt();
@@ -42,22 +43,43 @@ public class gerenciadorTarefas {
                     System.out.println("Lista de Tarefas");
                     for (int i = 0; i < tarefas.size(); i++) {
                         System.out.println((i + 1) + ". " + tarefas.get(i));
+                    }
 
-                        System.out.print("\nQual número deseja remover? ");
-                        int idRemover = leitor.nextInt();
-                        leitor.nextLine();
+                    System.out.print("\nQual número deseja remover? ");
+                    int idRemover = leitor.nextInt();
+                    leitor.nextLine();
 
-                        if (idRemover > 0 && idRemover <= tarefas.size()) {
-                            String removida = tarefas.remove(idRemover - 1);
-                            System.out.println("Tarefa '" + removida + "' removida!");
-                        } else {
-                            System.out.println("Número inválido."); // aqui ele remove uma das tarefas de fato
-                        }
+                    if (idRemover > 0 && idRemover <= tarefas.size()) {
+                        String removida = tarefas.remove(idRemover - 1);
+                        System.out.println("Tarefa '" + removida + "' removida!");
+                    } else {
+                        System.out.println("Número inválido."); // aqui ele remove uma das tarefas de fato
+                    }
+                }
+            } else if (opcao == 4) {
+                if (tarefas.isEmpty()) {
+                    System.out.println("A lista está vazia, nada para editar.");
+                } else {
+                    for (int i = 0; i < tarefas.size(); i++) {
+                        System.out.println((i + 1) + ". " + tarefas.get(i));
+                    }
+
+                    System.out.print("\nQual número deseja editar? ");
+                    int idEditar = leitor.nextInt();
+                    leitor.nextLine();
+
+                    if (idEditar > 0 && idEditar <= tarefas.size()) {
+                        System.out.print("Digite o novo texto: ");
+                        String novoTexto = leitor.nextLine();
+                        tarefas.set(idEditar - 1, novoTexto);
+                        System.out.println("Tarefa atualizada!");
+                    } else {
+                        System.out.println("Número inválido.");
                     }
                 }
             }
-        } while (opcao != 4);
+        } while (opcao != 5);
 
-        System.out.println("Encerrando... Bom dia de trabalho!"); // se o usuário selecionar a opção 4 o programa encerra
+        System.out.println("Encerrando... Bom dia de trabalho!"); // se o usuário selecionar a opção 5 o programa encerra
     }
 }
