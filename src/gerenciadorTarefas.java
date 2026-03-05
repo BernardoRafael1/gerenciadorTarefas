@@ -51,9 +51,9 @@ public class gerenciadorTarefas {
 
                     if (idRemover > 0 && idRemover <= tarefas.size()) {
                         String removida = tarefas.remove(idRemover - 1);
-                        System.out.println("Tarefa '" + removida + "' removida!");
+                        System.out.println("Tarefa '" + removida + "' removida!"); // essa parte é para remover uma tarefa
                     } else {
-                        System.out.println("Número inválido."); // aqui ele remove uma das tarefas de fato
+                        System.out.println("Número inválido.");
                     }
                 }
             } else if (opcao == 4) {
@@ -72,7 +72,7 @@ public class gerenciadorTarefas {
                         System.out.print("Digite o novo texto: ");
                         String novoTexto = leitor.nextLine();
                         tarefas.set(idEditar - 1, novoTexto);
-                        System.out.println("Tarefa atualizada!");
+                        System.out.println("Tarefa atualizada!"); // essa parte é para editar uma das tarefas na lista
                     } else {
                         System.out.println("Número inválido.");
                     }
